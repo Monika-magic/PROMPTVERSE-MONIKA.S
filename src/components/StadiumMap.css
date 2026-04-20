@@ -1,0 +1,173 @@
+.stadium-map-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.stadium-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Zone Common Styles */
+.stadium-zone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.stadium-zone:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Colors based on crowd level */
+.zone-low {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #a7f3d0;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+}
+
+.zone-medium {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #fde68a;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
+}
+
+.zone-high {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+  animation: pulseGlow 2s infinite;
+}
+
+/* Specific Areas */
+.gates-area {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gates-area .stadium-zone {
+  height: 80px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+.facilities-area {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 16px;
+  height: 250px;
+}
+
+.facility-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.facility-col .stadium-zone {
+  flex: 1;
+}
+
+.pitch-area {
+  background: rgba(16, 185, 129, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pitch {
+  width: 90%;
+  height: 80%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  position: relative;
+}
+
+.pitch-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.pitch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.pitch-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 80px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pitch-box.left {
+  left: 0;
+  border-left: none;
+}
+
+.pitch-box.right {
+  right: 0;
+  border-right: none;
+}
+
+.seating-area {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.seating-area .stadium-zone {
+  height: 120px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+@media (max-width: 640px) {
+  .facilities-area {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .pitch-area {
+    height: 150px;
+  }
+}
